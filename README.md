@@ -61,3 +61,20 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 * Inspiration
 * etc
 
+# CryptoCurrently
+Activate python virtual environment
+
+To install necessary packages:
+    pip install -r requirements.txt
+    python nltk.py
+
+Create .env file with the following variables: 
+    SECRET_KEY = ''
+    DB_NAME = 'cryptodb'
+    DB_USER = ''
+    DB_PASS = ''
+
+Setup local database (path: projcryptocurrently/resources):
+    psql -U [username] -f setup.sql
+
+To run the server with no problems, use python manage.py runserver --noreload

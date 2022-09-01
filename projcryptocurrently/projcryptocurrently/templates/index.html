@@ -1,0 +1,259 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}CryptoCurrently{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/landing-style.css' %}" type="text/css">
+{% endblock %}
+
+{% block header %} {% endblock %}
+
+{% block content %}
+
+<div class="container">
+
+    <div id="dayOfTheWeek">{{ day }}<!-- will be invisible --></div>
+    <div id="conversionRate">{{ conversionRate }}<!-- will be invisible --></div>
+
+    <button id="tour-button" type="button"><img src="../static/css/images/question-mark-96.png" alt=""></button>
+    <div id="tour-modal">
+        <div id="modal-content">
+            <div class="modal-top">
+                <h3>CryptoCurrently Quick Tour</h3>
+                <span id="modal-ok">Close</span>
+            </div>
+            <h2>What is sentiment analysis?</h2>
+            <p>According to the Oxford Dictionary, sentiment analysis is the process of computationally identifying and categorizing opinions expressed in a piece of text, especially in order to determine whether the writer's attitude towards a particular topic, product, etc. is positive, negative, or neutral. As such, CryptoCurrently wants to utilize these sentiments in order to create trading indicators and provide traders with more insights to make informed decisions. Additionally, CryptoCurrently also uses natural language processing techniques such as DTM, Ngram, TF IDF to provide traders with more data to consider, as well as the use of bar graphs and Wordcloud in order to create powerful data visualizations.</p>
+            <p>1. Pick among the available cryptocurrencies in the website.</p>
+            <img src="../static/css/images/qt-1.png" alt="">
+            <p>2. Inside the next page, you will see the information about the cryptocurrency you picked.</p>
+            <img src="../static/css/images/qt-2.png" alt="">
+            <p>3. You can also check out the charts and the picture cloud for additional information.</p>
+
+        </div>
+    </div>
+
+    <div id="landing">
+        <div id="nav">
+            <div id="datetime">
+                <div class="date" id="date" onload="showTime()"></div>
+                <div class="time" id="time" onload="showTime()"> PHT</div>
+                <script src="{% static 'js/app.js' %}" type="text/javascript" defer></script>
+            </div>
+    
+            <div class="first-col">
+                <hr class = 'nav-hr'>
+                    <span>CryptoCurrently is an application that aims to provide trend indicators through quantified sentiments from Twitter to Cryptocurrency traders.
+                    </span>
+                <hr class = 'nav-hr'>
+                    <span>Sentiments will be extracted from tweets from Twitter and will generate the visuals that show relevant information regarding the currency
+                    </span>
+                <hr class = 'nav-hr'>
+            </div>
+    
+            <div class="second-col">
+                <hr class = 'nav-hr'>
+                <a href="#">Documentation</a>
+                <hr class = 'nav-hr'>
+                <a href="reach">Reach Us</a>
+                <hr class = 'nav-hr'>
+            </div>
+        </div>
+        
+        <div id="main-text">
+            <div id="crypto" class="subtext">
+                <span>CryptoCurrently</span> 
+            </div>
+            <div id="crypto-desc" class="subtext">
+                <span>
+                    Invest your money confidently
+                </span>
+            </div>
+            <a id="down-link" href="#coin-container">
+                <div id="down">
+                    <img src="{% static 'css/images/down-100-b.png' %}" alt="">
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div id="coin-container">
+        <div id="coin-text">
+            Available CryptoCurrencies
+        </div>
+        <div id="filter-feature">
+            <label for="crypto-filters" id="filter-label">Filter by:</label>
+            <select name="crypto-filters" id="crypto-filters">
+                <option value="no-filter">-----</option>
+                <option value="positive-fluctuation">Compound Score Increased</option>
+                <option value="negative-fluctuation">Compound Score Decreased</option>
+                <option value="max-positive-sentiment">Highest % of Positive Sentiments</option>
+                <option value="min-positive-sentiment">Lowest % of Positive Sentiments</option>
+                <option value="max-negative-sentiment">Highest % of Negative Sentiments</option>
+                <option value="min-negative-sentiment">Lowest % of Negative Sentiments</option>
+                <option value="more-positive-sentiments">Positive Sentiments > Negative Sentiments</option>
+                <option value="more-negative-sentiments">Negative Sentiments > Positive Sentiments</option>
+            </select>
+            <button id="filter-button" class="filter-buttons">Filter</button>
+            <button id="reset-button" class="filter-buttons">Reset</button>
+        </div>
+        <p class="cs-meaning">CS <span>=</span> Sentiment Analysis Compound Score</p>
+        <div id="coins">
+            <div id="bitcoin" class="btn">
+                <a href="/coin/bitcoin" class="coin-link" >
+                    <div class="top-text">
+                        <h4 id="btc-price" class="price"> {{ bitcoin_value }} </h4>
+        
+                        <div class="fluctuation">
+                            <p class="cs-label">CS:</p>
+                            <h3 class="fluctuation-percent"> {{ bitcoin_comp_score }}%</h3>
+                        </div>
+                    </div>
+
+                    <div class="bottom-text">
+                        <h1 class="coin-name">Bitcoin</h1>
+                        <h2 class="short-name"> BTC <span class="diff-font">/</span> USD </h2> 
+                    </div>
+
+                    <img class="logo" id="bitcoin-logo" src="../static/css/images/bitcoin-logo.webp" alt="">
+                </a>
+            </div>
+
+            <div id="ethereum" class="btn">
+                <a href="/coin/ethereum" class="coin-link">
+                    <div class="top-text">
+                        <h4 id="eth-price" class="price"> {{ ethereum_value }} </h4>
+        
+                        <div class="fluctuation">
+                            <p class="cs-label">CS:</p>
+                            <h3 class="fluctuation-percent"> {{ ethereum_comp_score }}%</h3>
+                        </div>
+                    </div>
+    
+                    <div class="bottom-text">
+                        <h1 class="coin-name">Ethereum</h1>
+                        <h2 class="short-name"> ETH <span class="diff-font">/</span> USD </h2> 
+                    </div>
+    
+                    <img class="logo" id="ethereum-logo" src="../static/css/images/ethereum-logo.webp" alt="">
+                </a>
+            </div>
+
+            <div id="xrp" class="btn">
+                <a href="/coin/xrp" class="coin-link">
+                    <div class="top-text">
+                        <h4 id="xrp-price" class="price"> {{ xrp_value }} </h4>
+        
+                        <div class="fluctuation">
+                            <p class="cs-label">CS:</p>
+                            <h3 class="fluctuation-percent"> {{ xrp_comp_score }}%</h3>
+                        </div>
+                    </div>
+    
+                    <div class="bottom-text">
+                        <h1 class="coin-name">XRP</h1>
+                        <h2 class="short-name"> XRP <span class="diff-font">/</span> USD </h2> 
+                    </div>
+    
+                    <img class="logo" id="xrp-logo" src="../static/css/images/xrp-logo.webp" alt="">
+                </a>
+            </div>
+
+            <div id="usd" class="btn">
+                <a href="/coin/usdcoin" class="coin-link">
+                    <div class="top-text">
+                        <h4 id="usdc-price" class="price"> {{ usd_value }} </h4>
+        
+                        <div class="fluctuation">
+                            <p class="cs-label">CS:</p>
+                            <h3 class="fluctuation-percent"> {{ usd_comp_score }}%</h3>
+                        </div>
+                    </div>
+    
+                    <div class="bottom-text">
+                        <h1 class="coin-name">USD Coin</h1>
+                        <h2 class="short-name"> USDC <span class="diff-font">/</span> USD </h2> 
+                    </div>
+    
+                    <img class="logo" id="usd-logo" src="../static/css/images/usdc-logo.webp" alt="">
+                </a>
+            </div>
+
+            <div id="bnb" class="btn">
+                <a href="/coin/binance" class="coin-link">
+                    <div class="top-text">
+                        <h4 id="bnb-price" class="price"> {{ bnb_value }} </h4>
+        
+                        <div class="fluctuation">
+                            <p class="cs-label">CS:</p>
+                            <h3 class="fluctuation-percent"> {{ bnb_comp_score }}%</h3>
+                        </div>
+                    </div>
+    
+                    <div class="bottom-text">
+                        <h1 class="coin-name">BNB</h1>
+                        <h2 class="short-name"> BNB <span class="diff-font">/</span> USD </h2> 
+                    </div>
+    
+                    <img class="logo" id="bnb-logo" src="../static/css/images/bnb-logo.webp" alt="">
+                </a>
+            </div>
+
+            <div id="tether" class="btn">
+                <a href="/coin/tether" class="coin-link">
+                    <div class="top-text">
+                        <h4 id="usdt-price" class="price"> {{ tether_value }} </h4>
+        
+                        <div class="fluctuation">
+                            <p class="cs-label">CS:</p>
+                            <h3 class="fluctuation-percent"> {{ tether_comp_score }}%</h3>
+                        </div>
+                    </div>
+    
+                    <div class="bottom-text">
+                        <h1 class="coin-name">Tether</h1>
+                        <h2 class="short-name"> USDT <span class="diff-font">/</span> USD </h2> 
+                    </div>
+    
+                    <img class="logo" id="tether-logo" src="../static/css/images/tether-logo.webp" alt="">
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="testclass" style="height: 100vh; color: black; margin-top:100vh; display: none;">
+        <h1 id="positive-fluc-filter">{{ positive_flucs }}</h1>
+        <h1 id="negative-fluc-filter">{{ negative_flucs }}</h1>
+        <h1 id="max-positive-sentiment">{{ max_positive_sentiment }}</h1>
+        <h1 id="min-positive-sentiment">{{ min_positive_sentiment }}</h1>
+        <h1 id="max-negative-sentiment">{{ max_negative_sentiment }}</h1>
+        <h1 id="min-negative-sentiment">{{ min_negative_sentiment }}</h1>
+        <h1 id="more-positive-sentiments">{{ more_positive_sentiments }}</h1>
+        <h1 id="more-negative-sentiments">{{ more_negative_sentiments }}</h1>
+    </div>
+
+</div>
+<script>
+var modal = document.getElementById("tour-modal");
+var btn = document.getElementById("tour-button");
+var span = document.getElementById("modal-ok");
+
+btn.onclick = function() {
+    modal.style.display = "block";
+    console.log("Click");
+}
+
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+        console.log("window");
+    }
+}
+</script>
+
+{% endblock %}
