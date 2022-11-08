@@ -5,6 +5,21 @@ stages:
 Deployment:
   image: ruby:2.4
   stage: deploy
+  services:
+    db: 
+      container_name: db
+      networks: 
+        - djangonetwork
+      web:
+        depends_on:
+          - db
+        links:
+          - db:db
+        networks:
+          - djangonetwork
+  networks:
+    djangonetwork:
+      driver: bridge
   before_script:
     - gem install dpl
     - wget -qO- https://cli-assets.heroku.com/install-ubuntu.sh | sh

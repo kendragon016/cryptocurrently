@@ -1,14 +1,14 @@
 {
-  "name": "cryptocurrently",
-  "description": "webapp to get info on cryptocurrency trends",
-  "version": "1.0.0",
-  "main": "start-server.sh",
-  "scripts": {
-    "start": "sh start-server.sh"
-  },
-  "author": "Google LLC",
-  "license": "Apache-2.0",
-  "dependencies": {
-    "express": "^4.17.1"
+    "name": "cryptocurrently",
+    "description": "webapp to get info on cryptocurrency trends",
+    "version": "1.0.0",
+    "main": "start-server.sh",
+    "scripts": {
+      "start": "sh start-server.sh"
+    },
+    "author": "Google LLC",
+    "license": "Apache-2.0",
+    "dependencies": {
+      "express": "^4.17.1"
+    }
   }
-}

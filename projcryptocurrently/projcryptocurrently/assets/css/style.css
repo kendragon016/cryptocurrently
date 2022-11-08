@@ -1,0 +1,395 @@
+@font-face {
+    font-family: 'Magazine Grotesk';
+    src: local('Magazine Grotesk'), url('../css/fonts/magazinegrotesque-regular.woff') format("woff");
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'Magazine Grotesk';
+    src: local('Magazine Grotesk'), url('../css/fonts/magazinegrotesque-bold.woff') format("woff");
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: 'Blatant';
+    src: local('Blatant'), url('../css/fonts/blatant.woff') format("woff");
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'Blatant';
+    src: local('Blatant'), url('../css/fonts/blatant-bold.woff') format("woff");
+    font-weight: 700;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+}
+
+button {
+    background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
+
+body[coin-name="Bitcoin"] { background-color: #FFEFDD; }
+body[coin-name="Ethereum"] { background-color: #DDF1FF; }
+body[coin-name="Xrp"] { background-color: #FFDDDD; }
+body[coin-name="Usdcoin"] { background-color: #DDE7FF; }
+body[coin-name="Tether"] { background-color: #DDFFF5; }
+body[coin-name="Binance"] { background-color: #FFFCDD; }
+
+#conversionRate {
+    color:red;
+    position: absolute;
+    opacity: 0;
+    z-index: 100;
+}
+
+.container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn {
+    color: hotpink;
+    background-color: darkblue;
+    margin: .5em;
+    padding: 1em 1.5em;
+    top: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-transform: uppercase;
+}
+
+.btn:hover {
+    background-color: hotpink;
+    color: darkblue;
+}
+
+.main {
+    margin: 72px;
+    position: relative;
+}
+
+#back-button {
+    width: 64px;
+    user-select: none;
+}
+
+.name-desc {
+    display: flex;
+    flex-direction: row;
+    margin: 20px 0 40px;
+    color: #242424;
+}
+
+#desc {
+    font-family: 'Magazine Grotesk', sans-serif;
+    font-weight: 400;
+}
+
+#name {
+    font-size: 68px;
+    font-family: 'Blatant', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #242424;
+}
+
+.name-desc img {
+    margin: 0 40px;
+    display: inline;
+}
+
+.coin-info {
+    margin-bottom: 40px;
+}
+
+#exchange-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color:#242424;
+}
+
+#exchange-container h3 {
+    background-color: white;
+    padding: 12px 20px 12px;
+    border-radius: 12px;
+    font-size: 28px;
+    font-family: 'Magazine Grotesk', sans-serif;
+    font-weight: 700;
+    display: none;
+}
+
+#exchange-rate {
+    font-size: 48px;
+    font-family: 'Blatant', sans-serif;
+    font-weight: 400;
+}
+
+#exchange-currency {
+    margin-top: 8px;
+    font-size: 20px;
+    font-family: 'Blatant', sans-serif;
+}
+
+.percent {
+    font-family: 'Blatant', sans-serif;
+    font-size: 36px;
+}
+
+.sentiment-result {
+    width: 100%;
+}
+
+#sentiment-label {
+    font-family: 'Magazine Grotesk', sans-serif;
+    font-weight: 400;
+    color: #242424;
+}
+
+.sentiment-container {
+    width: 100%;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.sentiment-container > * {
+    width: 27%;
+    max-width: 27%;
+    border-radius: 24px;
+    border: 2px solid #242424;
+    height: calc((100vw - 144px)*.27);
+    margin-top: 28px;
+    display: flex;
+    flex-direction: column;
+}
+
+.sentiment-container > * h2 {
+    font-size: clamp(24px, 4.5vw, 60px);
+    margin: 24px 24px 0 24px;
+    font-weight: 700;
+    font-family: 'Blatant', sans-serif;
+    font-style: normal;
+    color: #242424;
+}
+
+.sentiment-container > * p {
+    margin: 0 24px;
+    font-family: 'Magazine Grotesk', sans-serif;
+    font-weight: 400;
+    color: #242424;
+}
+
+#back-text {
+    font-weight: 700;
+    z-index: -999;
+    font-size: 440px;
+    position: absolute;
+    top: -100px;
+    right: -140px;
+    font-family: 'Blatant', sans-serif;
+    user-select: none;
+}
+
+#back-text[coin-name="Bitcoin"] { color: #F9E7D3; }
+#back-text[coin-name="Ethereum"] { color: #cddfec; }
+#back-text[coin-name="Xrp"] { color: #f0d0d0; }
+#back-text[coin-name="Usdcoin"] { color: #ccd5eb; }
+#back-text[coin-name="Tether"] { color: #cae9e0; }
+#back-text[coin-name="Binance"] { color: #eeebce; }
+
+.divider {
+    width: 70%;
+    margin: 52px auto 52px;
+    border-top: 2px solid #242424;
+}
+
+.graph {
+    width: 100%;
+    border: 2px solid #242424;
+    border-radius: 24px;
+    margin-bottom: 12px;
+}
+
+.graph-desc {
+    margin-bottom: 64px;
+    font-family: 'Magazine Grotesk';
+    font-size: clamp(12px, 2vw, 16px);
+}
+
+.graph img {
+    border-radius: 24px;
+    width: 100%;
+}
+
+.tooltiptext {
+    box-sizing: border-box;
+    display: none;
+    width: calc(100% - 48px);
+    background-color: white;
+    color: black;
+    margin: auto 24px 24px;
+    padding: 12px;
+    border-radius: 20px;
+    justify-self: end;
+    font-size: 12px;
+    z-index: 1;
+    border: 1px solid black;
+}
+
+.sentiment-container div:hover .tooltiptext {
+    display: block;
+}
+
+.prev-compound {
+    font-family: 'Blatant';
+}
+
+p .percent {
+    font-size: 1em;
+}
+
+@media screen and (min-width: 1400px) {
+    .main {
+        margin: 72px auto;
+        max-width: 1256px;
+    }
+
+    #back-text {
+        right: calc(-120px - (50vw - 600px));
+        font-size: 500px;
+        top: -144px;
+    }
+
+    .sentiment-container > * {
+        height: calc(1256px*.27);
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .name-desc {
+        flex-direction: column;
+    }
+
+    .sentiment-container > * h2 {
+        margin: 16px 16px 0 16px;
+    }
+
+    .sentiment-container > * p {
+        font-size: 12px;
+        margin: 0 16px;
+    }
+
+    #name {
+        margin-bottom: 20px;
+    }
+
+    .name-desc img {
+        display: none;
+    }
+
+    .graph-desc {
+        margin-bottom: 40px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+
+    #back-button {
+        width: 48px;
+    }
+
+    .main {
+        margin: 32px;
+    }
+
+    #back-text {
+        font-size: 380px;
+        top: 140px;
+        right: -320px;
+        transform: rotate(90deg);
+    }
+
+    #back-text[coin-name="Usdcoin"]{right: -440px;}
+    #back-text[coin-name="Tether"]{right: -440px;}
+    
+    .name-desc{
+        margin: 16px 0 28px;
+    }
+
+    #name {
+        font-size: 52px;
+    }
+    
+    #desc {
+        font-size: 14px;
+    }
+
+    #exchange-rate {
+        font-size: 32px;
+    }
+
+    #exchange-currency {
+        font-size: 16px;
+    }
+
+    #exchange-container h3, .percent{
+        font-size: 20px;
+    }
+
+    
+    #sentiment-label {
+        font-size: 14px;
+    }
+
+    .sentiment-container {
+        flex-direction: column;
+    }
+
+    .sentiment-container > div:first-of-type{
+        margin-top: 20px;
+    }
+    
+    .sentiment-container > * {
+        width: 100%;
+        max-width: none;
+        height: auto;
+    }
+
+    .sentiment-container > * h2 {
+        font-size: 48px;
+        margin: 16px 24px 0 24px;
+    }
+
+    .sentiment-container > * p {
+        font-size: 12px;
+        margin: 0 24px 32px;
+    }
+
+    .sentiment-container .comp-label {
+        margin-bottom: 0;
+    }
+
+    .graph-desc {
+        margin-bottom: 28px;
+    }
+}
