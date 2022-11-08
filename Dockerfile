@@ -38,6 +38,6 @@ RUN pip install -r requirements.txt
 RUN chown -R www-data:www-data /opt/cryptocurrently
 RUN chmod +x start-server.sh
 
-EXPOSE 8010
+EXPOSE 8080
 STOPSIGNAL SIGTERM
 CMD ["/opt/cryptocurrently/start-server.sh"]
