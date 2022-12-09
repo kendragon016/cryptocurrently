@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cryptocurrently-v1
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      run: cryptocurrently-v1
+  template:
+    metadata:
+      labels:
+        run: cryptocurrently-v1
+        name: cryptocurrently-v1
+    spec:
+      containers:
+      - image: miguelgg1024/cryptocurrentlyamdnew
+        name: cryptocurrently-v1
+        ports:
+        - containerPort: 8080
+          protocol: TCP

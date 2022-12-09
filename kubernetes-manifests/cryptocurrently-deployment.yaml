@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cryptocurrently-deployment
+  labels:
+    app: cryptocurrently
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: cryptocurrently
+  template:
+    metadata:
+      labels:
+        app: cryptocurrently
+    spec:
+      containers:
+      - name: cryptocurrently
+        image: miguelgg1024/cryptocurrentlyamdnew
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+        resources:
+          # You must specify requests for CPU to autoscale
+          # based on CPU utilization
+            requests:
+              memory: "128Mi"
+              cpu: "250m"
+            limits:
+              memory: "1024Mi"
+              cpu: "500m"

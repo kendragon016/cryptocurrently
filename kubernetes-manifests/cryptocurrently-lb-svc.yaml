@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: cryptocurrently-lb-svc
+spec:
+  type: LoadBalancer
+  loadBalancerIP: 34.66.249.21
+  selector:
+    name: cryptocurrently-v2
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8080
